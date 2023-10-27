@@ -1,4 +1,12 @@
 pipeline {
+
+  options {
+    ansiColor('xterm')
+  }
+    tools{
+        maven 'maven'
+    }
+
     agent any
 
     stages {
@@ -9,7 +17,7 @@ pipeline {
         }
         stage('Build') {
             steps {
-                sh 'mvn clean install'
+                sh 'mvn -DskipTests=true clean install'
             }
         }
         stage('Test') {
